@@ -1,0 +1,72 @@
+<!-- Fun 50/30/20 Calculator for 14-year-olds -->
+<div id="savings-calc" style="font-family: Arial, sans-serif; max-width:720px; margin:10px auto; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); background:#ffffff;">
+  <h2 style="margin:0 0 12px 0; color:#2b7a78; text-align:center;">
+    50/30/20 Savings Calculator (RWF)
+  </h2>
+  <p style="text-align:center; color:#555; font-size:14px; margin-bottom:20px;">
+    Type your monthly income and see your 50/30/20 plan instantly — plan smart, spend smart!
+  </p>
+
+  <label for="income" style="display:block; margin-bottom:6px; font-weight:600;">Monthly after-tax income (RWF)</label>
+  <input id="income" type="number" placeholder="e.g. 300000" style="width:100%; padding:10px; font-size:16px; border-radius:6px; border:1px solid #ccc; box-sizing:border-box;" />
+
+  <div style="display:flex; gap:10px; margin-top:12px;">
+    <button id="calcBtn" style="flex:1; padding:10px; font-weight:600; border-radius:8px; border:none; cursor:pointer; background:#168aad; color:#fff;">Calculate</button>
+    <button id="resetBtn" style="padding:10px; font-weight:600; border-radius:8px; border:1px solid #ccc; background:#f0f0f0; cursor:pointer;">Reset</button>
+  </div>
+
+  <div id="results" style="margin-top:20px; display:none;">
+    <div style="padding:12px; border-radius:8px; border:1px solid #eee; background:#f9f9f9;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+        <div>🏠 Necessities (50%)</div><div id="necessities" style="font-weight:700; color:#f28c28;">0 RWF</div>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+        <div>🎮 Wants (30%)</div><div id="wants" style="font-weight:700; color:#6a994e;">0 RWF</div>
+      </div>
+      <div style="display:flex; justify-content:space-between;">
+        <div>💰 Savings & Debt Repayment (20%)</div><div id="savings" style="font-weight:700; color:#168aad;">0 RWF</div>
+      </div>
+    </div>
+    <p style="margin-top:10px; color:#555; font-size:14px;">Tip: Change your income number and click calculate again to plan your month!</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function formatRwf(n) {
+    if (isNaN(n) || !isFinite(n)) return '0 RWF';
+    return n.toLocaleString('en-RW') + ' RWF';
+  }
+
+  const incomeInput = document.getElementById('income');
+  const calcBtn = document.getElementById('calcBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const resultsDiv = document.getElementById('results');
+  const necessitiesEl = document.getElementById('necessities');
+  const wantsEl = document.getElementById('wants');
+  const savingsEl = document.getElementById('savings');
+
+  calcBtn.addEventListener('click', () => {
+    const val = parseFloat(incomeInput.value || 0);
+    const n = Math.round(val * 0.5);
+    const w = Math.round(val * 0.3);
+    const s = Math.round(val * 0.2);
+    necessitiesEl.textContent = formatRwf(n);
+    wantsEl.textContent = formatRwf(w);
+    savingsEl.textContent = formatRwf(s);
+    resultsDiv.style.display = 'block';
+  });
+
+  resetBtn.addEventListener('click', () => {
+    incomeInput.value = '';
+    resultsDiv.style.display = 'none';
+  });
+
+  incomeInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      calcBtn.click();
+    }
+  });
+});
+</script>
