@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const calcBtn = document.getElementById('calcBtn');
   const resetBtn = document.getElementById('resetBtn');
   const resultsDiv = document.getElementById('results');
-  const necessitiesEl = document.getElementById('needs');
+  const needsEl = document.getElementById('needs');
   const wantsEl = document.getElementById('wants');
   const savingsEl = document.getElementById('savings');
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const n = Math.round(val * 0.5);
     const w = Math.round(val * 0.3);
     const s = Math.round(val * 0.2);
-    necessitiesEl.textContent = formatRwf(n);
+    needsEl.textContent = formatRwf(n);
     wantsEl.textContent = formatRwf(w);
     savingsEl.textContent = formatRwf(s);
     resultsDiv.style.display = 'block';
