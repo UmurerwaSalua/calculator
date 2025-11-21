@@ -18,7 +18,7 @@
   <div id="results" style="margin-top:20px; display:none;">
     <div style="padding:12px; border-radius:8px; border:1px solid #eee; background:#f9f9f9;">
       <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-        <div> Needs (50%)</div><div id="necessarities" style="font-weight:700; color:#f28c28;">0 RWF</div>
+        <div> Needs (50%)</div><div id="needs" style="font-weight:700; color:#f28c28;">0 RWF</div>
       </div>
       <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
         <div> Wants (30%)</div><div id="wants" style="font-weight:700; color:#6a994e;">0 RWF</div>
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const calcBtn = document.getElementById('calcBtn');
   const resetBtn = document.getElementById('resetBtn');
   const resultsDiv = document.getElementById('results');
-  const necessitiesEl = document.getElementById('necessities');
+  const necessitiesEl = document.getElementById('needs');
   const wantsEl = document.getElementById('wants');
   const savingsEl = document.getElementById('savings');
 
